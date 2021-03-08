@@ -1,5 +1,10 @@
 pipeline {
     agent any
+    parameters
+	{
+		string(name: 'DOCKER_IMAGE', defaultValue: 'default_name', description: 'Docker image')
+
+	}
 
             stages {
                 stage('Clone') {
@@ -8,10 +13,23 @@ pipeline {
                     }
                 }
                 stage ('java .jar') {
-                    steps {
+                    steps
+            {
+				sh "docker rmi -f ${DOCKER_IMAGE}"
+				sh "docker build -t ${DOCKER_IMAGE} ."
+	            sh "docker login -u admin -p Drcg#1470 localhost:8082 "
+		        sh "docker tag ${DOCKER_IMAGE} localhost:8082/${DOCKER_IMAGE}"
+		        sh "docker push localhost:8082/${DOCKER_IMAGE}"
+                sh "javac *.java"
+                sh "jar cfe calculator.jar Calculadora2 ./*.class"
+                sh "curl -v -u 'admin:Drcg#1470' --upload calculator.jar http://nexus:8081/repository/java-calc/"
+
+            }
+
+                   /* steps {
                         sh 'javac *.java'
-                        sh "jar cfe calculator.jar Calculadora2 ./*.class"
-                    }   
+                        sh "jar cfe calculator.jar ./Calculadora2 *.class"
+                    }*/   
                 }
                 stage('SonarQube analysis') {
                         environment { scannerHome = tool 'sonarqube' }
