@@ -20,7 +20,7 @@ pipeline {
                                     sh "${scannerHome}/bin/sonar-scanner \
                                     -D sonar.login=65aa459a2fdc71b3d8ee2e5ffc715db2acf51033 \
                                     -D sonar.projectKey=sonarqube \
-                                    -D sonar.java.binaries=/var/jenkins_home/workspace/sonar \
+                                    -D sonar.java.binaries=/var/jenkins_home/workspace/Desnvolvimento \
                                     -D sonar.java.source=11 \
                                     -D sonar.host.url=http://sonarqube:9000/"
                             }
