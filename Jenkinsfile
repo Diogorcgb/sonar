@@ -18,9 +18,9 @@ pipeline {
                     steps {
                             withSonarQubeEnv('sonarqube') {
                                     sh "${scannerHome}/bin/sonar-scanner \
-                                    -D sonar.login=65aa459a2fdc71b3d8ee2e5ffc715db2acf51033 \
+                                    -D sonar.login=f8138a393b1e9db51314fdc815c9f2be5ff40495 \
                                     -D sonar.projectKey=sonarqube \
-                                    -D sonar.java.binaries=/var/jenkins_home/workspace/Desnvolvimento \
+                                    -D sonar.java.binaries=/var/jenkins_home/workspace/sonar \
                                     -D sonar.java.source=11 \
                                     -D sonar.host.url=http://sonarqube:9000/"
                             }
