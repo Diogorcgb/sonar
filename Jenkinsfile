@@ -2,7 +2,7 @@ pipeline {
     agent any
     parameters
 	{
-		string(name: 'DOCKER_IMAGE', defaultValue: 'default_name', description: 'Docker image')
+		string(name: 'Calc', defaultValue: 'default_name', description: 'Docker image')
 
 	}
 
