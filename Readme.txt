@@ -1,4 +1,3 @@
-s
 Instalar Jenkins  
 
 1- Criar dockerfile ------------------------------
