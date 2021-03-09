@@ -1,2 +1,0 @@
-# calc-java
-2
